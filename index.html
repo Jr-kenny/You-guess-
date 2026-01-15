@@ -8,42 +8,53 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --bg-deep: #020617;
+            --accent: #6366f1;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0f172a;
+            background-color: var(--bg-deep);
             color: #f8fafc;
             margin: 0;
-            overflow-x: hidden;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
         @keyframes reveal {
-            0% { transform: scale(0.5) rotateY(90deg); opacity: 0; }
-            100% { transform: scale(1) rotateY(0deg); opacity: 1; }
+            0% { transform: translateY(10px); opacity: 0; filter: blur(4px); }
+            100% { transform: translateY(0); opacity: 1; filter: blur(0); }
         }
 
-        @keyframes pop {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-4px); }
-            75% { transform: translateX(4px); }
+        @keyframes soft-pop {
+            0% { transform: scale(0.98); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         .animate-reveal {
-            animation: reveal 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation: reveal 0.4s cubic-bezier(0.2, 0, 0.2, 1) forwards;
         }
 
         .animate-pop {
-            animation: pop 0.2s ease-out;
+            animation: soft-pop 0.2s ease-out forwards;
         }
 
-        .animate-shake {
-            animation: shake 0.3s ease-in-out;
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+
+        .key-shadow {
+            box-shadow: 0 1px 2px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
         }
     </style>
 <script type="importmap">
@@ -59,5 +70,6 @@
 </head>
 <body>
     <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
 </body>
 </html>
