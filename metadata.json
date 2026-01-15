@@ -1,0 +1,5 @@
+{
+  "name": "You Guess",
+  "description": "A 4-letter word guessing game where you have 8 attempts to uncover the mystery word. Features AI-powered word generation and definitions.",
+  "requestFramePermissions": []
+}
